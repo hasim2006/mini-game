@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Mini Game Arcade</title>
+  <meta name="description" content="Learn about Mini Game Arcade, our mission to build fast, lightweight, and accessible browser mini-games, and the web technologies behind our games.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/main.css?v=2.1">
+  <link rel="stylesheet" href="css/music-player.css?v=2.1">
+  <script src="js/theme.js?v=2.1"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-link" aria-label="Mini Game Arcade Homepage">
+        <img src="assets/favicon.svg" alt="Mini Game Arcade" class="brand-icon">
+        <span class="brand-title">Mini Game Arcade</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="index.html#games" class="nav-link">Games</a></li>
+          <li><a href="about.html" class="nav-link active">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="privacy.html" class="nav-link">Privacy</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme" role="switch">
+          <span class="theme-toggle-track">
+            <span class="theme-toggle-icon icon-sun" aria-hidden="true">☀️</span>
+            <span class="theme-toggle-icon icon-moon" aria-hidden="true">🌙</span>
+            <span class="theme-toggle-thumb" aria-hidden="true"></span>
+          </span>
+        </button>
+        <button id="nav-mute-btn" class="btn-mute" aria-label="Toggle Sound">🔊</button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <article class="page-card">
+      <header class="page-header">
+        <div class="page-category">Editorial & Background</div>
+        <h1 class="page-title">About Mini Game Arcade</h1>
+        <div class="page-meta-date">Last Updated: October 2026</div>
+      </header>
+
+      <div class="prose">
+        <p>
+          Welcome to <strong>Mini Game Arcade</strong>, an independent online platform dedicated to delivering responsive, instant-play browser games with zero friction. We believe that web gaming should be fast, delightful, and accessible to anyone with an internet connection—free from massive app store downloads, intrusive paywalls, and annoying software updates.
+        </p>
+
+        <h2>Our Mission</h2>
+        <p>
+          Modern gaming often demands heavy downloads, large memory footprints, and account logins before you can take your first turn. Mini Game Arcade was created to bring back the pure joy of the classic web arcade: click a link and immediately start playing.
+        </p>
+        <p>
+          Whether you have a 3-minute break between study sessions or want to test your reflexes on your smartphone during a commute, our games are built to load instantly and perform smoothly across all devices.
+        </p>
+
+        <h2>The Technology Behind Our Games</h2>
+        <p>
+          Every game on our platform is hand-crafted using open web standards:
+        </p>
+        <ul>
+          <li><strong>HTML5 Canvas API:</strong> High-performance 2D hardware-accelerated rendering capable of continuous 60 frames per second animations.</li>
+          <li><strong>Web Audio API:</strong> Procedural real-time sound synthesis. We avoid megabytes of heavy MP3 audio assets by synthesizing laser-sharp sound effects directly in code, ensuring zero network latency and lightning-fast load times.</li>
+          <li><strong>Modern CSS3 & Flexbox/Grid:</strong> Fluid layouts that automatically adjust to any screen aspect ratio, from compact mobile phones to ultra-wide desktop monitors.</li>
+          <li><strong>Zero Heavy Frameworks:</strong> Lightweight, modular vanilla JavaScript ensures minimal JavaScript bundle size and maximum battery efficiency on mobile devices.</li>
+        </ul>
+
+        <h2>Commitment to Player Experience & Fair Advertising</h2>
+        <p>
+          We strictly follow ethical web standards:
+        </p>
+        <ul>
+          <li><strong>No Fake Buttons:</strong> You will never see fake "Download" buttons or misleading click traps.</li>
+          <li><strong>Respectful Ads:</strong> Advertising helps keep our servers running and games free, but ads are strictly placed outside active gameplay zones so they never interfere with swipes or clicks.</li>
+          <li><strong>Privacy First:</strong> We do not track your personal identity or sell your personal details. Gameplay stats and high scores are saved strictly on your local browser using <code>localStorage</code>.</li>
+        </ul>
+
+        <h2>Get in Touch</h2>
+        <p>
+          Have game suggestions, bug reports, or feature requests? We love hearing from our community! Visit our <a href="contact.html">Contact Page</a> to send a direct message.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-link">
+          <img src="assets/favicon.svg" alt="Mini Game Arcade" class="brand-icon">
+          <span class="brand-title">Mini Game Arcade</span>
+        </a>
+        <p>Original, responsive HTML5 browser games designed for speed and fun.</p>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Games</h4>
+        <ul class="footer-links">
+          <li><a href="games/fruit-slice/index.html" class="footer-link">Fruit Blade</a></li>
+          <li><a href="games/memory-match/index.html" class="footer-link">Memory Match</a></li>
+          <li><a href="index.html#games" class="footer-link">All Games</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Legal & Help</h4>
+        <ul class="footer-links">
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+          <li><a href="privacy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="terms.html" class="footer-link">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Mini Game Arcade. All rights reserved.</p>
+      <p><a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script src="js/audio.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/music-player.js"></script>
+  <script src="js/data-portal.js"></script>
+  <script>
+    const mobileBtn = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    mobileBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+
+    const muteBtn = document.getElementById('nav-mute-btn');
+    muteBtn.addEventListener('click', () => {
+      if (window.soundManager) {
+        window.soundManager.toggleMute();
+        muteBtn.textContent = window.soundManager.getMuted() ? '🔇' : '🔊';
+      }
+    });
+  </script>
+</body>
+</html>
+

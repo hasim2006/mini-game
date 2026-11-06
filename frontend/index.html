@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Game Arcade - Play Free Browser Mini Games Online</title>
+  <meta name="description" content="Play free, fast, and responsive HTML5 mini games online in your browser. No downloads, no installs. Try Fruit Blade and Memory Match today!">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/main.css?v=2.1">
+  <link rel="stylesheet" href="css/music-player.css?v=2.1">
+  <script src="js/theme.js?v=2.1"></script>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-link" aria-label="Mini Game Arcade Homepage">
+        <img src="assets/favicon.svg" alt="Mini Game Arcade" class="brand-icon">
+        <span class="brand-title">Mini Game Arcade</span>
+        <span class="brand-badge">PRO</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="#games" class="nav-link">Games</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="privacy.html" class="nav-link">Privacy</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme" role="switch">
+          <span class="theme-toggle-track">
+            <span class="theme-toggle-icon icon-sun" aria-hidden="true">☀️</span>
+            <span class="theme-toggle-icon icon-moon" aria-hidden="true">🌙</span>
+            <span class="theme-toggle-thumb" aria-hidden="true"></span>
+          </span>
+        </button>
+        <button id="nav-mute-btn" class="btn-mute" aria-label="Toggle Sound">🔊</button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-pill">
+        <span class="hero-pill-dot"></span>
+        Zero Downloads • Pure Web Gaming
+      </div>
+      <h1 class="hero-title">
+        Instant Fun, <span class="hero-gradient-text">Zero Friction</span>
+      </h1>
+      <p class="hero-subtitle">
+        Play high-speed, lightweight browser mini-games built with modern HTML5, CSS3, and procedural Web Audio. Completely free, mobile-optimized, and playable on any screen.
+      </p>
+      <div class="hero-actions">
+        <a href="#games" class="btn btn-primary">Browse All Games ↓</a>
+        <a href="games/fruit-slice/index.html" class="btn btn-accent">Play Fruit Blade 🍉</a>
+      </div>
+    </section>
+
+    <!-- AdSense Non-Intrusive Placement Slot -->
+    <div class="ad-banner-wrapper">
+      <div class="adsense-placeholder" aria-label="Advertisement Area">
+        <span class="ad-label">Advertisement</span>
+        <p class="ad-desc">Quality, non-intrusive sponsor banner space (Configured for Google AdSense)</p>
+      </div>
+    </div>
+
+    <!-- Games Collection Section -->
+    <section class="games-section" id="games">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Playable Games</h2>
+          <p class="section-desc">Hand-crafted, responsive mini-games built to run smoothly in any browser.</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-bar" role="tablist">
+          <button class="filter-btn active" data-filter="all" role="tab">All Games</button>
+          <button class="filter-btn" data-filter="action" role="tab">Action</button>
+          <button class="filter-btn" data-filter="puzzle" role="tab">Puzzle</button>
+          <button class="filter-btn" data-filter="arcade" role="tab">Arcade</button>
+        </div>
+      </div>
+
+      <!-- Games Grid -->
+      <div class="games-grid">
+        
+        <!-- Game 1: Fruit Blade -->
+        <article class="game-card" data-category="action arcade">
+          <a href="games/fruit-slice/index.html" class="game-thumb-link" aria-label="Play Fruit Blade">
+            <img src="assets/fruit-blade-thumb.svg" alt="Fruit Blade Slicing Game" class="game-thumb-img" loading="lazy">
+            <span class="game-badge">⚡ POPULAR</span>
+          </a>
+          <div class="game-content">
+            <div class="game-tags">
+              <span class="game-tag">Action</span>
+              <span class="game-tag">Arcade</span>
+              <span class="game-tag">Physics</span>
+            </div>
+            <h3 class="game-title">Fruit Blade</h3>
+            <p class="game-desc">
+              Test your reflexes! Slice delicious flying fruits in mid-air using your mouse or touch gestures. Dodge explosive bombs and build combo multipliers.
+            </p>
+            <div class="game-meta">
+              <span class="game-stats">🎮 Mouse / Touch Swipe</span>
+              <a href="games/fruit-slice/index.html" class="btn btn-primary btn-sm">Play Now ▶</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Game 2: Memory Match -->
+        <article class="game-card" data-category="puzzle arcade">
+          <a href="games/memory-match/index.html" class="game-thumb-link" aria-label="Play Memory Match">
+            <img src="assets/memory-match-thumb.svg" alt="Memory Match Card Game" class="game-thumb-img" loading="lazy">
+            <span class="game-badge">🧠 BRAIN TRAIN</span>
+          </a>
+          <div class="game-content">
+            <div class="game-tags">
+              <span class="game-tag">Puzzle</span>
+              <span class="game-tag">Memory</span>
+              <span class="game-tag">Casual</span>
+            </div>
+            <h3 class="game-title">Memory Match</h3>
+            <p class="game-desc">
+              Sharpen your focus and pattern recognition! Flip cards, match pairs of arcade gems and trophies, and beat your personal record across 3 difficulty levels.
+            </p>
+            <div class="game-meta">
+              <span class="game-stats">🎯 Click / Tap to Flip</span>
+              <a href="games/memory-match/index.html" class="btn btn-primary btn-sm">Play Now ▶</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Why Choose Mini Game Arcade -->
+    <section class="features-section">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto;">
+        <h2 class="section-title">Why Play on Mini Game Arcade?</h2>
+        <p class="section-desc">Engineered from the ground up for speed, accessibility, and pure gameplay enjoyment.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon-wrapper">⚡</div>
+          <h3 class="feature-title">Zero Downloads & No Waiting</h3>
+          <p class="feature-text">
+            All games run natively in your browser using pure HTML5 and Canvas. No heavy client downloads, plugins, or registration needed.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-wrapper">📱</div>
+          <h3 class="feature-title">Touch & Desktop Optimized</h3>
+          <p class="feature-text">
+            Seamlessly responsive on smartphones, tablets, and desktop computers. Controls automatically adapt to swipe, tap, or mouse drag.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-wrapper">🔒</div>
+          <h3 class="feature-title">Privacy-Respecting & Clean</h3>
+          <p class="feature-text">
+            We prioritize fair play, transparent privacy policies, and non-intrusive advertising that never disrupts your active gameplay.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-link">
+          <img src="assets/favicon.svg" alt="Mini Game Arcade" class="brand-icon">
+          <span class="brand-title">Mini Game Arcade</span>
+        </a>
+        <p>
+          Mini Game Arcade provides original, fast, and engaging HTML5 games for players around the world. Designed with love for classic web gaming.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Games</h4>
+        <ul class="footer-links">
+          <li><a href="games/fruit-slice/index.html" class="footer-link">Fruit Blade</a></li>
+          <li><a href="games/memory-match/index.html" class="footer-link">Memory Match</a></li>
+          <li><a href="#games" class="footer-link">All Games</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Information & Legal</h4>
+        <ul class="footer-links">
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="contact.html" class="footer-link">Contact & Support</a></li>
+          <li><a href="privacy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="terms.html" class="footer-link">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Mini Game Arcade. All rights reserved.</p>
+      <p>Built with modern web standards • Hosted on Vercel</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/music-player.js"></script>
+  <script src="js/data-portal.js"></script>
+  <script>
+    // Mobile navigation toggle
+    const mobileBtn = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    mobileBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
+
+    // Sound toggle sync with audio manager
+    const muteBtn = document.getElementById('nav-mute-btn');
+    function updateMuteState() {
+      if (window.soundManager) {
+        muteBtn.textContent = window.soundManager.getMuted() ? '🔇' : '🔊';
+      }
+    }
+    muteBtn.addEventListener('click', () => {
+      if (window.soundManager) {
+        window.soundManager.toggleMute();
+        updateMuteState();
+      }
+    });
+    updateMuteState();
+
+    // Category Filter Buttons
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.game-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category.includes(filter)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+

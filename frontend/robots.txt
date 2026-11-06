@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mini-game-arcade-tan.vercel.app/sitemap.xml
