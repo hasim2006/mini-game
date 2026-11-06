@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArcadePlatformDatabaseSchema",
+  "description": "Entity schemas and relational definitions for Mini Game Arcade local-first storage & telemetry engine.",
+  "version": "1.0.0",
+  "entities": {
+    "game_sessions": {
+      "type": "object",
+      "required": ["sessionId", "gameId", "score", "timestamp"],
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique session identifier"
+        },
+        "gameId": {
+          "type": "string",
+          "enum": ["fruit-slice", "memory-match"],
+          "description": "Target game identifier"
+        },
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Player final score achieved"
+        },
+        "durationSeconds": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Session gameplay duration in seconds"
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": ["easy", "medium", "hard", "standard"],
+          "default": "standard"
+        },
+        "moves": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of card flips or blade moves made"
+        },
+        "stars": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "description": "Performance rating stars"
+        },
+        "deviceViewport": {
+          "type": "string",
+          "description": "Client screen resolution category (mobile, tablet, desktop, 4k)"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 recording timestamp"
+        }
+      }
+    },
+    "high_scores": {
+      "type": "object",
+      "required": ["gameId", "highScore", "lastUpdated"],
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "enum": ["fruit-slice", "memory-match"]
+        },
+        "highScore": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bestTimeSeconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "contact_inquiries": {
+      "type": "object",
+      "required": ["inquiryId", "name", "email", "message", "timestamp"],
+      "properties": {
+        "inquiryId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "subject": {
+          "type": "string",
+          "maxLength": 150
+        },
+        "message": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 2000
+        },
+        "status": {
+          "type": "string",
+          "enum": ["received", "reviewed", "archived"],
+          "default": "received"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}
