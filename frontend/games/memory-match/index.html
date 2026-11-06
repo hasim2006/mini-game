@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Memory Match - Free Brain Training Card Game | Mini Game Arcade</title>
+  <meta name="description" content="Test your memory and concentration in Memory Match! Flip cards, match pairs of arcade symbols, and challenge yourself across 3 difficulty levels.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="stylesheet" href="../../css/main.css?v=2.1">
+  <link rel="stylesheet" href="../../css/memory-match.css?v=2.1">
+  <link rel="stylesheet" href="../../css/music-player.css?v=2.1">
+  <script src="../../js/theme.js?v=2.1"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../../index.html" class="brand-link" aria-label="Mini Game Arcade">
+        <img src="../../assets/favicon.svg" alt="Mini Game Arcade" class="brand-icon">
+        <span class="brand-title">Mini Game Arcade</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html" class="nav-link">Home</a></li>
+          <li><a href="../../index.html#games" class="nav-link active">Games</a></li>
+          <li><a href="../../about.html" class="nav-link">About</a></li>
+          <li><a href="../../contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme" role="switch">
+          <span class="theme-toggle-track">
+            <span class="theme-toggle-icon icon-sun" aria-hidden="true">☀️</span>
+            <span class="theme-toggle-icon icon-moon" aria-hidden="true">🌙</span>
+            <span class="theme-toggle-thumb" aria-hidden="true"></span>
+          </span>
+        </button>
+        <a href="../../index.html" class="btn btn-secondary btn-sm">← Back to Arcade</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="memory-game-wrapper">
+    <!-- Breadcrumb -->
+    <nav class="game-breadcrumb" aria-label="Breadcrumb" style="display: flex; gap: 0.5rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+      <a href="../../index.html">Home</a>
+      <span>›</span>
+      <a href="../../index.html#games">Games</a>
+      <span>›</span>
+      <span style="color: var(--text-main); font-weight: 700;">Memory Match</span>
+    </nav>
+
+    <!-- Game Board Card -->
+    <div class="memory-board-card">
+      
+      <!-- Toolbar & Stats -->
+      <div class="memory-toolbar">
+        <div class="memory-stats-group">
+          <div class="mem-stat">
+            <span class="mem-stat-label">Time</span>
+            <span class="mem-stat-val" id="mem-timer">00:00</span>
+          </div>
+          <div class="mem-stat">
+            <span class="mem-stat-label">Moves</span>
+            <span class="mem-stat-val" id="mem-moves">0</span>
+          </div>
+          <div class="mem-stat">
+            <span class="mem-stat-label">Matched</span>
+            <span class="mem-stat-val" id="mem-pairs" style="color: var(--primary);">0 / 8</span>
+          </div>
+        </div>
+
+        <div class="memory-actions">
+          <select id="diff-select" class="diff-select" aria-label="Difficulty">
+            <option value="easy">Easy (12 Cards)</option>
+            <option value="medium" selected>Medium (16 Cards)</option>
+            <option value="hard">Hard (20 Cards)</option>
+          </select>
+
+          <button id="btn-restart" class="btn btn-secondary btn-sm" aria-label="Restart Game">🔄 Restart</button>
+          <button id="btn-mute" class="btn-mute" aria-label="Toggle Sound">🔊</button>
+        </div>
+      </div>
+
+      <!-- Card Grid -->
+      <div class="card-grid grid-16" id="card-grid" role="region" aria-label="Memory Card Grid">
+        <!-- Cards generated dynamically via JavaScript -->
+      </div>
+    </div>
+
+    <!-- Victory Modal -->
+    <div class="victory-modal-overlay" id="victory-modal">
+      <div class="victory-card">
+        <div class="stars-rating" id="vic-stars">⭐⭐⭐</div>
+        <h2 style="font-size: 2rem; color: var(--text-main); font-weight: 800; margin-bottom: 0.5rem;">Awesome Memory!</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          You successfully cleared all pairs with great focus!
+        </p>
+
+        <div class="victory-stat-box">
+          <div>
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);">Time</span>
+            <div style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);" id="vic-time">00:00</div>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);">Moves</span>
+            <div style="font-size: 1.4rem; font-weight: 800; color: var(--primary);" id="vic-moves">0</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; justify-content: center;">
+          <button id="btn-vic-play-again" class="btn btn-primary">Play Again 🔄</button>
+          <a href="../../index.html" class="btn btn-secondary">Arcade Home 🏠</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AdSense Non-Intrusive Placement Slot -->
+    <div class="ad-banner-wrapper" style="margin: 2rem 0; padding: 0;">
+      <div class="adsense-placeholder" aria-label="Advertisement Area">
+        <span class="ad-label">Advertisement</span>
+        <p class="ad-desc">Quality, non-intrusive sponsor banner space (Configured for Google AdSense)</p>
+      </div>
+    </div>
+
+    <!-- Rules & How to Play -->
+    <section class="game-info-card" style="margin-top: 1.5rem;">
+      <h2 style="font-size: 1.5rem; color: var(--text-main); font-weight: 800; margin-bottom: 0.75rem;">How to Play Memory Match</h2>
+      <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem;">
+        Memory Match is a classic cognitive puzzle game that exercises spatial memory and visual recall. 
+        Click or tap any hidden card to flip it over and reveal its arcade icon. Then, select a second card. 
+        If the symbols match, they stay face-up with a glowing highlight. If they do not match, they flip back 
+        down after a brief moment.
+      </p>
+      <h3 style="font-size: 1.15rem; color: var(--text-main); font-weight: 700; margin-bottom: 0.5rem;">Controls</h3>
+      <ul style="color: var(--text-muted); margin-left: 1.25rem; line-height: 1.6;">
+        <li><strong>Mouse / Touch:</strong> Click or tap any card to flip it over.</li>
+        <li><strong>Keyboard Navigation:</strong> Use <kbd class="kbd-key">Tab</kbd> to cycle between cards and press <kbd class="kbd-key">Enter</kbd> or <kbd class="kbd-key">Space</kbd> to flip.</li>
+        <li><strong>Difficulty Modes:</strong> Select Easy (12 cards), Medium (16 cards), or Hard (20 cards) using the dropdown selector.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="../../index.html" class="brand-link">
+          <img src="../../assets/favicon.svg" alt="Mini Game Arcade" class="brand-icon">
+          <span class="brand-title">Mini Game Arcade</span>
+        </a>
+        <p>Original, responsive HTML5 browser games designed for speed and fun.</p>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="../../index.html" class="footer-link">Arcade Home</a></li>
+          <li><a href="../fruit-slice/index.html" class="footer-link">Play Fruit Blade</a></li>
+          <li><a href="../../about.html" class="footer-link">About Us</a></li>
+          <li><a href="../../privacy.html" class="footer-link">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Fair Play</h4>
+        <p style="font-size: 0.88rem; line-height: 1.6;">
+          Zero intrusive popups, zero fake download buttons, zero trackers. Just pure browser gaming.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Mini Game Arcade. All rights reserved.</p>
+      <p><a href="../../terms.html">Terms</a> • <a href="../../privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/audio.js"></script>
+  <script src="../../js/db.js"></script>
+  <script src="../../js/music-player.js"></script>
+  <script src="../../js/data-portal.js"></script>
+  <script src="../../js/memory-match.js"></script>
+</body>
+</html>
+
