@@ -1,0 +1,16 @@
+{
+  "name": "mini-game-arcade-backend",
+  "version": "1.0.0",
+  "description": "Lightweight REST API service for Mini Game Arcade telemetry and leaderboards",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["game-backend", "arcade-api", "leaderboards", "rest-api"],
+  "author": "Mohammad Hasim",
+  "license": "CC0-1.0"
+}
