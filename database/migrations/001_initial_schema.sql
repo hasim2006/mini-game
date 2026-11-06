@@ -42,3 +42,4 @@ CREATE TABLE IF NOT EXISTS contact_inquiries (
 
 CREATE INDEX IF NOT EXISTS idx_contact_created_at 
 ON contact_inquiries (created_at DESC);
+

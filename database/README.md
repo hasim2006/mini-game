@@ -30,3 +30,4 @@ To apply relational schema to a remote PostgreSQL or CockroachDB instance:
 ```bash
 psql -U your_user -d arcade_db -f database/migrations/001_initial_schema.sql
 ```
+
