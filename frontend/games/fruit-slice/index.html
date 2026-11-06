@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Fruit Blade - Free Online Fruit Slicing Game | Mini Game Arcade</title>
+  <meta name="description" content="Play Fruit Blade free in your browser! Fast-paced fruit slicing arcade action with touch swiping, particle physics, bomb avoidance, and combo multipliers.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="stylesheet" href="../../css/main.css?v=2.1">
+  <link rel="stylesheet" href="../../css/fruit-slice.css?v=2.1">
+  <link rel="stylesheet" href="../../css/music-player.css?v=2.1">
+  <script src="../../js/theme.js?v=2.1"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../../index.html" class="brand-link" aria-label="Mini Game Arcade">
+        <img src="../../assets/favicon.svg" alt="Mini Game Arcade" class="brand-icon">
+        <span class="brand-title">Mini Game Arcade</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html" class="nav-link">Home</a></li>
+          <li><a href="../../index.html#games" class="nav-link active">Games</a></li>
+          <li><a href="../../about.html" class="nav-link">About</a></li>
+          <li><a href="../../contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme" role="switch">
+          <span class="theme-toggle-track">
+            <span class="theme-toggle-icon icon-sun" aria-hidden="true">☀️</span>
+            <span class="theme-toggle-icon icon-moon" aria-hidden="true">🌙</span>
+            <span class="theme-toggle-thumb" aria-hidden="true"></span>
+          </span>
+        </button>
+        <a href="../../index.html" class="btn btn-secondary btn-sm">← Back to Arcade</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="game-page-wrapper">
+    <!-- Breadcrumb -->
+    <nav class="game-breadcrumb" aria-label="Breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span>›</span>
+      <a href="../../index.html#games">Games</a>
+      <span>›</span>
+      <span style="color: var(--text-main); font-weight: 700;">Fruit Blade</span>
+    </nav>
+
+    <!-- Game Viewport Container -->
+    <div class="game-viewport" id="game-container">
+      <canvas id="game-canvas"></canvas>
+
+      <!-- Heads-Up Display (HUD) -->
+      <div class="hud-layer">
+        <div class="hud-top">
+          <div class="score-display">
+            <span class="score-label">Score</span>
+            <span class="score-value" id="hud-score">0</span>
+            <span class="score-high">High: <span id="hud-high-score">0</span></span>
+          </div>
+
+          <!-- Strikes (Lives) -->
+          <div class="strikes-container" aria-label="Lives remaining">
+            <span class="strike-icon" id="strike-1">✕</span>
+            <span class="strike-icon" id="strike-2">✕</span>
+            <span class="strike-icon" id="strike-3">✕</span>
+          </div>
+
+          <!-- Action Controls -->
+          <div class="hud-controls">
+            <button id="btn-pause" class="hud-btn" aria-label="Pause Game">⏸</button>
+            <button id="btn-mute" class="hud-btn" aria-label="Mute Sound">🔊</button>
+            <button id="btn-fullscreen" class="hud-btn" aria-label="Toggle Fullscreen">⛶</button>
+          </div>
+        </div>
+
+        <!-- Dynamic Combo Banner -->
+        <div class="combo-banner" id="combo-banner">COMBO x2! +20</div>
+      </div>
+
+      <!-- Start Overlay Screen -->
+      <div class="overlay-screen" id="screen-start">
+        <span class="overlay-badge">HTML5 ACTION ARCADE</span>
+        <h1 class="overlay-title">Fruit Blade</h1>
+        <p class="overlay-desc">
+          Slice fruits before they fall to score points! Avoid dangerous black bombs and unleash devastating combo slices.
+        </p>
+        <div class="rules-hint">
+          <div class="rule-pill"><span>🍉</span> Slice all fruits</div>
+          <div class="rule-pill"><span>💣</span> Avoid bombs</div>
+          <div class="rule-pill"><span>⚡</span> Slice 2+ for Combos</div>
+        </div>
+        <button id="btn-start-game" class="btn btn-primary" style="font-size: 1.15rem; padding: 0.9rem 2.4rem;">
+          Start Slicing ▶
+        </button>
+      </div>
+
+      <!-- Pause Overlay Screen -->
+      <div class="overlay-screen hidden" id="screen-pause">
+        <h2 class="overlay-title">Game Paused</h2>
+        <p class="overlay-desc">Take a breath, ninja. Your blade will be ready when you are.</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <button id="btn-resume-game" class="btn btn-primary">Resume Game ▶</button>
+          <button id="btn-restart-from-pause" class="btn btn-secondary">Restart 🔄</button>
+          <a href="../../index.html" class="btn btn-secondary">Arcade Home 🏠</a>
+        </div>
+      </div>
+
+      <!-- Game Over Overlay Screen -->
+      <div class="overlay-screen hidden" id="screen-game-over">
+        <span class="overlay-badge" style="color: #FF0055; border-color: rgba(255, 0, 85, 0.4);">GAME OVER</span>
+        <h2 class="overlay-title">Slice Run Ended!</h2>
+        
+        <div class="overlay-stats">
+          <div class="stat-item">
+            <span class="stat-num" id="final-score">0</span>
+            <span class="stat-label">Final Score</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="final-high-score" style="color: var(--accent-gold);">0</span>
+            <span class="stat-label">All-Time Best</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <button id="btn-play-again" class="btn btn-primary" style="font-size: 1.1rem; padding: 0.85rem 2rem;">
+            Play Again 🔄
+          </button>
+          <a href="../../index.html" class="btn btn-secondary">Return to Arcade 🏠</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AdSense Non-Intrusive Placement Slot -->
+    <div class="ad-banner-wrapper" style="margin: 2rem 0; padding: 0;">
+      <div class="adsense-placeholder" aria-label="Advertisement Area">
+        <span class="ad-label">Advertisement</span>
+        <p class="ad-desc">Quality, non-intrusive sponsor banner space (Configured for Google AdSense)</p>
+      </div>
+    </div>
+
+    <!-- Below Game Details & How to Play -->
+    <section class="game-info-card">
+      <div class="game-info-grid">
+        <div>
+          <h2 style="font-size: 1.5rem; margin-bottom: 0.75rem; color: var(--text-main); font-weight: 800;">About Fruit Blade</h2>
+          <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem;">
+            Fruit Blade is an arcade reaction game built from scratch using the HTML5 Canvas API and Web Audio API. 
+            Fruits are thrown upwards in realistic physical parabolic arcs. Your objective is to slice as many fruits 
+            as possible with your blade without letting three fruits drop off screen or slicing explosive bombs.
+          </p>
+
+          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: 700;">Scoring & Multipliers</h3>
+          <ul style="color: var(--text-muted); margin-left: 1.25rem; line-height: 1.6;">
+            <li><strong>Standard Fruits:</strong> Watermelon, Orange, and Apple yield 10 base points each.</li>
+            <li><strong>Bonus Fruits:</strong> Bananas and Strawberries yield 15 points each.</li>
+            <li><strong>Combo Bonus:</strong> Slicing 2 or more fruits in a single fluid gesture awards an escalating point multiplier (+20 for 2x, +30 for 3x, etc.).</li>
+            <li><strong>Strikes:</strong> You have 3 strikes. Missing an un-sliced fruit or slicing a bomb adds a strike. At 3 strikes, the game concludes.</li>
+          </ul>
+        </div>
+
+        <!-- Controls Box -->
+        <div class="controls-box">
+          <h3 style="font-size: 1.1rem; color: var(--text-main); font-weight: 700; margin-bottom: 0.5rem;">Game Controls</h3>
+          <ul class="controls-list">
+            <li class="control-item">
+              <span>Mouse / Drag</span>
+              <span class="control-key">Left Click + Swipe</span>
+            </li>
+            <li class="control-item">
+              <span>Touch / Mobile</span>
+              <span class="control-key">Finger Swipe</span>
+            </li>
+            <li class="control-item">
+              <span>Pause / Resume</span>
+              <span class="control-key">P or Spacebar</span>
+            </li>
+            <li class="control-item">
+              <span>Toggle Sound</span>
+              <span class="control-key">M</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="../../index.html" class="brand-link">
+          <img src="../../assets/favicon.svg" alt="Mini Game Arcade" class="brand-icon">
+          <span class="brand-title">Mini Game Arcade</span>
+        </a>
+        <p>Original, responsive HTML5 browser games designed for speed and fun.</p>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="../../index.html" class="footer-link">Arcade Home</a></li>
+          <li><a href="../memory-match/index.html" class="footer-link">Play Memory Match</a></li>
+          <li><a href="../../about.html" class="footer-link">About Us</a></li>
+          <li><a href="../../privacy.html" class="footer-link">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Fair Play</h4>
+        <p style="font-size: 0.88rem; line-height: 1.6;">
+          Zero intrusive popups, zero fake download buttons, zero trackers. Just pure browser gaming.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Mini Game Arcade. All rights reserved.</p>
+      <p><a href="../../terms.html">Terms</a> • <a href="../../privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <!-- Audio & Game Engine Scripts -->
+  <script src="../../js/audio.js"></script>
+  <script src="../../js/db.js"></script>
+  <script src="../../js/music-player.js"></script>
+  <script src="../../js/data-portal.js"></script>
+  <script src="../../js/fruit-slice.js"></script>
+</body>
+</html>
+
