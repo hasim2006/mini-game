@@ -5,6 +5,7 @@
 **A high-performance, responsive HTML5 Canvas browser arcade featuring Fruit Blade and Memory Match, powered by a procedural Web Audio API sound engine and dual-state theme architecture.**
 
 [![Live Web Application](https://img.shields.io/badge/Production%20App-mini--game--arcade--tan.vercel.app-6366F1?style=for-the-badge&logo=vercel&logoColor=white)](https://mini-game-arcade-tan.vercel.app)
+[![CI Pipeline](https://img.shields.io/github/actions/workflow/status/hasim2006/mini-game/ci.yml?branch=main&style=for-the-badge&label=CI%20Pipeline&logo=githubactions&logoColor=white)](https://github.com/hasim2006/mini-game/actions)
 [![Vanilla JS](https://img.shields.io/badge/Vanilla_JS-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![HTML5 Canvas](https://img.shields.io/badge/HTML5-Canvas_2D-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 [![Web Audio API](https://img.shields.io/badge/Web_Audio-Procedural_Synth-8B5CF6?style=for-the-badge&logo=soundcharts&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
